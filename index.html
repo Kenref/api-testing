@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Api Testing</title>
+	</head>
+	<body>
+		<input type="text"><br>
+		<button>refresh image</button><br>
+		<img src="#" />
+
+
+		<script>
+			const img = document.querySelector("img")
+            const button = document.querySelector("button")
+			const text = document.querySelector("input")
+			button.addEventListener("click", function(e) {
+				fetch("https://api.giphy.com/v1/gifs/translate?api_key=Oh1CQqQK95r6nLKpTXg6H54hI0msCcVK&s=" + text.value, {mode: "cors"})
+				.then(function(response) {
+					return response.json();
+				})
+				.then(function(response) {
+					img.src = response.data.images.original.url
+				})
+				.catch(function(error) {
+					console.log(error)
+				})
+			})
+
+
+
+		</script>
+	</body>
+</html>
+
+    
